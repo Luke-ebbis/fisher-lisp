@@ -1,0 +1,23 @@
+version: 4
+environments:
+  default:
+    channels:
+    - url: https://conda.anaconda.org/conda-forge/
+    packages:
+      linux-64:
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/sbcl-1.5.4-ha770c72_1.tar.bz2
+packages:
+- kind: conda
+  name: sbcl
+  version: 1.5.4
+  build: ha770c72_1
+  build_number: 1
+  subdir: linux-64
+  url: https://conda.anaconda.org/conda-forge/linux-64/sbcl-1.5.4-ha770c72_1.tar.bz2
+  sha256: 0c9509efd2eabdc16ed6b1885b21a9a3e02c108e8060619d78ebd2988e584dfa
+  md5: b3fdb5942cd784337be5a74bf4a2f796
+  depends:
+  - __glibc >=2.17,<3.0.a0
+  license: BSD-2-Clause AND MIT
+  size: 9924755
+  timestamp: 1647489542514
