@@ -15,6 +15,7 @@
        ( * (factorial k)
            (factorial (- n k)))))
 
+; the odds ratio is the ratio of the rows devided per column
 ; (defun fisher-odds-ratio (a b c d))
 
 (defun fisher-p (a b c d)
