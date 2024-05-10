@@ -1,4 +1,4 @@
-;; The Fisher test
+;; The Fisher test implemented in lisp
 
 (defun factorial (n)
   "Calculate the factorial of n, known as n!"
@@ -13,9 +13,8 @@
        ( * (factorial k)
            (factorial (- n k)))))
 
-;; The Fisher function
-(defun fisher (a b c d)
-  "The Fisher exact test"
+(defun fisher-p (a b c d)
+  "The Fisher exact test p value "
   (let ((n (+ a b c d)))
    (/ ( * (choose (+ a c) a)
           (choose (+ b d) b)
@@ -23,7 +22,19 @@
           (factorial (+ c d)))
      (factorial n))))
 
+;; TODO calculate the confidence intervals, and the odds ratio. Allow for
+;; alternatives
+
 ;; Test code
-(assert (eql (factorial 4) 24))
-(assert (eql (factorial 0) 1))
-(assert (eql (factorial 1) 1))
+(defun approx-equal (x y &optional (epsilon 1.0e-5))
+  "Test if two floats are approximately equal within a given epsilon.
+  Made with the help of Chatjippity"
+  (<= (abs (- x y)) epsilon))
+
+(assert (eql (factorial 4) 
+             24))
+(assert (eql (factorial 0) 
+             1))
+(assert (eql (factorial 1) 
+             1))
+(assert (approx-equal (float (fisher-p 1 9 11 3)) 0.001346076))
