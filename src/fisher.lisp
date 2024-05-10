@@ -1,4 +1,6 @@
 ;; The Fisher test implemented in lisp
+;; For now I only implemented 2×2 tables.
+;; r×c tables are on my todo list.
 
 (defun factorial (n)
   "Calculate the factorial of n, known as n!"
@@ -13,6 +15,8 @@
        ( * (factorial k)
            (factorial (- n k)))))
 
+; (defun fisher-odds-ratio (a b c d))
+
 (defun fisher-p (a b c d)
   "The Fisher exact test p value "
   (let ((n (+ a b c d)))
@@ -25,6 +29,11 @@
 ;; TODO calculate the confidence intervals, and the odds ratio. Allow for
 ;; alternatives
 
+
+(defun main ()
+	(print (float (fisher-p 1 9 11 3))))
+
+(main)
 ;; Test code
 (defun approx-equal (x y &optional (epsilon 1.0e-5))
   "Test if two floats are approximately equal within a given epsilon.
