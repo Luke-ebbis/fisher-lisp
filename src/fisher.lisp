@@ -29,11 +29,16 @@
 ;; TODO calculate the confidence intervals, and the odds ratio. Allow for
 ;; alternatives
 
-
 (defun main ()
-	(print (float (fisher-p 1 9 11 3))))
+  "Run the fisher test. Compilation written with the help of chat GPT"
+  (let ((a (parse-integer (nth 1 sb-ext:*posix-argv*)))
+        (b (parse-integer (nth 2 sb-ext:*posix-argv*)))
+        (c (parse-integer (nth 3 sb-ext:*posix-argv*)))
+        (d (parse-integer (nth 4 sb-ext:*posix-argv*))))
+    (format t "~a~%" 
+            (float (fisher-p a b c d)))))
 
-(main)
+
 ;; Test code
 (defun approx-equal (x y &optional (epsilon 1.0e-5))
   "Test if two floats are approximately equal within a given epsilon.
