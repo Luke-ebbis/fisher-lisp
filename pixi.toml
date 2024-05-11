@@ -9,6 +9,7 @@ platforms = ["linux-64"]
 [tasks]
 compile = "bash compile.sh"
 fisher = "./bin/fisher"
+test = "sbcl --noinform --non-interactive  --load src/test.lisp"
 
 [dependencies]
 sbcl = ">=1.5.4,<1.6"
