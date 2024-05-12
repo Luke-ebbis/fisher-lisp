@@ -12,8 +12,14 @@
              1))
 (assert (eql (factorial 1) 
              1))
-(assert (approx-equal (float (fisher-p 1 9 11 3)) 0.001346076))
+(assert (approx-equal 
+          (float (fisher-p 1 9 11 3))
+          0.001346076))
 
-(print "test sucessful!")
+(load "src/go.lisp")
+(setq testData 
+      (parse-two-tabbed-file "resources/test/test"))
+
+(print testData)
+(pprint "test sucessful!")
 (terpri)
-(exit)
