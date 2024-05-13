@@ -61,4 +61,18 @@
          (examined (parse-two-tabbed-file subset)))
     (list universe examined)))
 
+; https://stackoverflow.com/a/2712585
+(defun flatten (l)
+  (cond ((null l) nil)
+        ((atom l) (list l))
+        (t (loop for a in l appending (flatten a)))))
+
 ; Per function annotation, the second part of the list, we sum found records
+
+(defun filter-annotation (annotation gene-name) 
+  "Filter an annotation for all records that have a gene name"
+  (let ((matches ()))
+    (loop for x in annotation
+          do (if (string= (car x) gene-name)
+                  (setq matches (cons matches (cdr x)))))
+    (flatten matches)))

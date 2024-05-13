@@ -22,10 +22,12 @@
 ; (print (length testData))
 
 ; we can read an annotation
-(print (read-go-annotation "resources/test/test"))
+(defvar annotation (read-go-annotation "resources/test/test"))
 
 ; we can read a gene set
-(print (read-gene-set "resources/test/set1.txt"))
+; (print (read-gene-set "resources/test/set1.txt"))
+(print annotation)
+(print (filter-annotation annotation "18S RRNA"))
 
 (pprint "test sucessful!")
 ; (print (split-by-one-delimiter (parse-file "resources/test/test") '#\Newline))
