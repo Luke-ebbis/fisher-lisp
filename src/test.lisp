@@ -22,4 +22,5 @@
 
 (print testData)
 (pprint "test sucessful!")
+(print (split-by-one-delimiter (parse-file "resources/test/test") '#\Newline))
 (terpri)

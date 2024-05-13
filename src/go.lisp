@@ -25,10 +25,9 @@
 
 ; Parse two-column tabbed file
 (defun parse-two-tabbed-file (filename)
-    (let ((data (car (split-by-one-delimiter 
+    (split-by-one-delimiter 
                       (car (split-by-one-delimiter 
                              (parse-file filename)
                              '#\Newline))
-                      '#\Tab)))) 
-      data))
+                      '#\Tab))
 
