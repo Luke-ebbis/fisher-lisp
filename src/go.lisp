@@ -23,11 +23,16 @@
     "Return a list without the last element"
     (reverse (cdr (reverse l))))
 
-; Parse two-column tabbed file
 (defun parse-two-tabbed-file (filename)
-    (split-by-one-delimiter 
-                      (car (split-by-one-delimiter 
-                             (parse-file filename)
-                             '#\Newline))
-                      '#\Tab))
+  "Parse the file with the go terms
 
+  Returns a list with lists of length 2 inside of it."
+    (let ((data (split-by-one-delimiter 
+                             (parse-file filename)
+                             '#\Newline)))
+      (let ((y ()))
+        (loop for x in data
+              do (setq y
+                       (append (list (split-by-one-delimiter x '#\Tab))
+                               y)))
+        (cdr y))))
