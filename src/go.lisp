@@ -1,3 +1,5 @@
+;; READ in the go terms.
+
 (defun parse-file (file-path)
   "Read the contents of the file at the specified path and return as string."
   (with-open-file (stream file-path
@@ -9,6 +11,7 @@
           (read-sequence contents stream)
           contents)
         (error "Failed to open file: ~A" file-path))))
+
 (defun split-by-one-delimiter (string delimiter) 
   "Returns a list of substrings of string divided by ONE space each. 
   Note: Two consecutive spaces will be seen as if there were an empty string 
@@ -36,3 +39,26 @@
                        (append (list (split-by-one-delimiter x '#\Tab))
                                y)))
         (cdr y))))
+
+
+(defun read-go-annotation (annotation-file-path)
+  (parse-two-tabbed-file annotation-file-path))
+
+(defun read-gene-set (gene-set)
+  "Read a list of genes, each gene must be separated by a newline symbol
+  Returns a list of gene symbols"
+    (let ((gene-set-string (parse-file gene-set)))
+      (without-last (split-by-one-delimiter gene-set-string '#\Newline))))
+
+; example code
+
+(let* ((v0 1)
+       (v1 (* v0 2))
+       (v2 (- v1))))
+
+(defun analyse-go-files (universe set1 set2)
+  (let* ((universe (parse-two-tabbed-file superset))
+         (examined (parse-two-tabbed-file subset)))
+    (list universe examined)))
+
+; Per function annotation, the second part of the list, we sum found records

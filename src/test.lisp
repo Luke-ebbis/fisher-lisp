@@ -17,10 +17,16 @@
           0.001346076))
 
 (load "src/go.lisp")
-(setq testData 
-      (parse-two-tabbed-file "resources/test/test"))
+; (setq testData
+;       (parse-two-tabbed-file "resources/test/ATH_GO_GOSLIM_Feb18.component"))
+; (print (length testData))
 
-(print testData)
+; we can read an annotation
+(print (read-go-annotation "resources/test/test"))
+
+; we can read a gene set
+(print (read-gene-set "resources/test/set1.txt"))
+
 (pprint "test sucessful!")
 ; (print (split-by-one-delimiter (parse-file "resources/test/test") '#\Newline))
 (terpri)
