@@ -29,15 +29,16 @@
 
 ;; TODO calculate the confidence intervals, and the odds ratio. Allow for
 ;; alternatives
-
 (defun main-fisher-test ()
   "Run the fisher test. Compilation written with the help of chat GPT"
-  (let ((a (parse-integer (nth 1 sb-ext:*posix-argv*)))
-        (b (parse-integer (nth 2 sb-ext:*posix-argv*)))
-        (c (parse-integer (nth 3 sb-ext:*posix-argv*)))
-        (d (parse-integer (nth 4 sb-ext:*posix-argv*))))
-    (format t "~a~%" 
-            (float (fisher-p a b c d)))))
+  (let ((args sb-ext:*posix-argv*))
+    (if (< (length args) 5)
+        (error "Not enough arguments provided. Please provide exactly 4 arguments.")
+        (let ((a (parse-integer (nth 1 args)))
+              (b (parse-integer (nth 2 args)))
+              (c (parse-integer (nth 3 args)))
+              (d (parse-integer (nth 4 args))))
+          (format t "~a~%" (float (fisher-p a b c d)))))))
 
 
 ;; Test code
