@@ -63,8 +63,10 @@
 
 ; https://stackoverflow.com/a/2712585
 (defun flatten (l)
-  (cond ((null l) nil)
-        ((atom l) (list l))
+  (cond ((null l) nil) ; is the list null, then set it to nill
+        ((atom l) (list l)) ; if it is an atom, set it to a list
+        ; in the end, loop over everything in the list, adding 
+        ; the flattened part
         (t (loop for a in l appending (flatten a)))))
 
 ; Per function annotation, the second part of the list, we sum found records
