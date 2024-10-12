@@ -3,7 +3,7 @@
 ;; r×c tables are on my todo list.
 
 (defun factorial (n)
-  "Calculate the factorial of n, known as n!"
+  "Calculate the factorial of n, known as n! exactly"
   ; 0! = 0
   (cond ((eql n 0) 1)
         ; Here we calculate (n -1)! × n = n!
@@ -11,7 +11,7 @@
 
 (defun choose (n k)
     "Binomial coeficient"
-    (/ (factorial n) 
+    (/ (factorial n)
        ( * (factorial k)
            (factorial (- n k)))))
 
@@ -47,10 +47,10 @@
   Made with the help of Chatjippity"
   (<= (abs (- x y)) epsilon))
 
-(assert (eql (factorial 4) 
+(assert (eql (factorial 4)
              24))
-(assert (eql (factorial 0) 
+(assert (eql (factorial 0)
              1))
-(assert (eql (factorial 1) 
+(assert (eql (factorial 1)
              1))
 (assert (approx-equal (float (fisher-p 1 9 11 3)) 0.001346076))
